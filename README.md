@@ -1,4 +1,4 @@
-# Countdown — marketing & legal site
+# Until Nxt — marketing & legal site
 
 Static pages served from this folder, paired to the iOS app. The four
 documents Apple wants for App Store Connect submission live here:
@@ -49,18 +49,18 @@ python3 -m http.server 8000
    - `https://<your-user>.github.io/<repo-name>/privacy.html`
    - `https://<your-user>.github.io/<repo-name>/terms.html`
    - `https://<your-user>.github.io/<repo-name>/support.html`
-5. Optional: add a custom domain (e.g. `countdown.app`) under
+5. Optional: add a custom domain (e.g. `untilnxt.app`) under
    Pages → Custom domain. The links inside the HTML use absolute
-   `https://countdown.app/...` for the canonical/og tags so SEO is
-   correct once a custom domain is wired; visitor-facing nav links are
-   relative and work on any host.
+   `https://margaritasi.github.io/until-nxt-legal/...` for the canonical/og
+   tags so SEO is correct on the current host; visitor-facing nav links
+   are relative and work on any host.
 
 ## Before App Store submission
 
 - [ ] Run `dart run tool/export_legal_html.dart` and commit the diff.
 - [ ] Replace the placeholder App Store CTA in `index.html` with the
       real `https://apps.apple.com/...` URL.
-- [ ] Confirm `support@countdown.app` (or whichever email you wire) is
+- [ ] Confirm `madgesmy@protonmail.com` (or whichever email you wire) is
       monitored — App Review will email this address.
 - [ ] Open all four pages in mobile Safari and verify they read cleanly
       on a small screen — Apple checks.
@@ -72,7 +72,7 @@ python3 -m http.server 8000
 
 These need your accounts and aren't generated:
 
-- A custom domain (`countdown.app` is a placeholder in metadata).
+- A custom domain (`untilnxt.app` would be ideal — current metadata uses the GitHub Pages URL).
 - The real "Download on the App Store" badge / link (placeholder CTA on
   `index.html`).
 - Localised App Store screenshots / video previews.
