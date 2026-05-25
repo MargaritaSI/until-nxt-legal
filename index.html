@@ -79,8 +79,8 @@
       width: 26px;
       height: 26px;
       border-radius: 7px;
-      background: linear-gradient(135deg, #1F3A2D, #3B5837);
-      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
+      background: #fff;
+      object-fit: cover;
     }
     header nav { display: flex; gap: 18px; font-size: 14px; }
     header nav a { color: var(--fg-dim); text-decoration: none; }
@@ -193,8 +193,8 @@
       margin: 0 auto 24px;
       font-size: 15px;
     }
-    .plans { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-    @media (max-width: 540px) { .plans { grid-template-columns: 1fr; } }
+    .plans { display: grid; gap: 14px; grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 720px) { .plans { grid-template-columns: 1fr; } }
     .plan {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.16);
@@ -229,7 +229,7 @@
 <body>
   <header>
     <a class="brand" href="./">
-      <span class="logo" aria-hidden="true"></span>
+      <img class="logo" src="./app-icon.png" alt="" aria-hidden="true">
       <span>Until Nxt</span>
     </a>
     <nav>
@@ -245,13 +245,13 @@
         <span class="badge">iOS</span>
         <span class="badge">Local-first</span>
         <span class="badge">No tracking</span>
-        <span class="badge">Pay once</span>
+        <span class="badge">Lifetime option</span>
       </div>
       <h1>Never miss<br>what matters.</h1>
       <p class="lede">
         A countdown app for the days you don't want to forget.
         Photo backgrounds, home and Lock-Screen widgets,
-        unlimited pinned events — paid once, kept forever.
+        unlimited pinned events — monthly, yearly, or pay once for life.
       </p>
       <a class="cta" href="#download">
         Coming to the App Store
@@ -300,9 +300,14 @@
       </p>
       <div class="plans">
         <div class="plan">
-          <h4>Annual</h4>
-          <div class="price">$14.99<small style="font-size:14px; font-weight:500"> / year</small></div>
-          <p class="note">Auto-renews · cancel anytime</p>
+          <h4>Monthly</h4>
+          <div class="price">$2.99<small style="font-size:14px; font-weight:500"> / mo</small></div>
+          <p class="note">Auto-renews monthly · cancel anytime</p>
+        </div>
+        <div class="plan">
+          <h4>Annual · Save ~58%</h4>
+          <div class="price">$14.99<small style="font-size:14px; font-weight:500"> / yr</small></div>
+          <p class="note">Auto-renews yearly · cancel anytime</p>
         </div>
         <div class="plan primary">
           <h4>Lifetime · Best value</h4>
