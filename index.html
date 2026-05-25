@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Countdown — local-first reminders for the moments that matter. iOS app with home-screen and Lock-Screen widgets.">
+  <meta property="og:title" content="Countdown — Never miss what matters.">
+  <meta property="og:description" content="Local-first event countdowns for iOS. Photo backgrounds, Lock-Screen widgets, unlimited pinned events.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://countdown.app/">
+  <title>Countdown — Never miss what matters.</title>
+  <link rel="canonical" href="https://countdown.app/">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg-soft: #1E1B4B;
+      --bg-accent: #312E81;
+      --fg: #F1F5F9;
+      --fg-dim: rgba(241,245,249,0.78);
+      --fg-faint: rgba(241,245,249,0.5);
+      --accent: #FB923C;
+      --line: rgba(241,245,249,0.12);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 50%, var(--bg-accent) 100%);
+      color: var(--fg);
+      font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Soft glow blobs — mirrors the in-app paywall hero */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      top: -180px;
+      right: -120px;
+      background: radial-gradient(circle, rgba(251,146,60,0.30), transparent 70%);
+    }
+    body::after {
+      bottom: -180px;
+      left: -120px;
+      background: radial-gradient(circle, rgba(124,58,237,0.30), transparent 70%);
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      color: var(--fg);
+    }
+    .brand .logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #1F3A2D, #3B5837);
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
+    }
+    header nav { display: flex; gap: 18px; font-size: 14px; }
+    header nav a { color: var(--fg-dim); text-decoration: none; }
+    header nav a:hover { color: var(--fg); }
+
+    main { position: relative; z-index: 1; }
+
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 48px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -1.5px;
+      margin: 0;
+      font-weight: 800;
+    }
+    .hero p.lede {
+      font-size: clamp(16px, 2.4vw, 19px);
+      color: var(--fg-dim);
+      margin: 18px auto 28px;
+      max-width: 540px;
+    }
+    .hero .badges {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .badge {
+      padding: 6px 12px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: var(--fg);
+    }
+    .cta {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(251,146,60,0.35);
+      transition: transform 0.15s ease;
+    }
+    .cta:hover { transform: translateY(-1px); }
+    .cta .placeholder-note {
+      display: block;
+      margin-top: 6px;
+      font-weight: 500;
+      font-size: 11px;
+      color: rgba(0,0,0,0.55);
+    }
+
+    .features {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .feature .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(251,146,60,0.18);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+    .feature p { margin: 0; color: var(--fg-dim); font-size: 14px; line-height: 1.45; }
+
+    .pricing {
+      max-width: 720px;
+      margin: 8px auto 0;
+      padding: 32px 24px 64px;
+      text-align: center;
+    }
+    .pricing h2 {
+      font-size: 26px;
+      letter-spacing: -0.4px;
+      margin: 0 0 8px;
+    }
+    .pricing p {
+      color: var(--fg-dim);
+      max-width: 480px;
+      margin: 0 auto 24px;
+      font-size: 15px;
+    }
+    .plans { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 540px) { .plans { grid-template-columns: 1fr; } }
+    .plan {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
+    }
+    .plan.primary { background: #fff; color: #0F172A; border-color: var(--accent); }
+    .plan h4 { margin: 0 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
+    .plan.primary h4 { color: var(--accent); }
+    .plan .price { font-size: 28px; font-weight: 800; letter-spacing: -0.6px; }
+    .plan .note { color: var(--fg-faint); font-size: 12px; }
+    .plan.primary .note { color: rgba(15,23,42,0.65); }
+
+    footer {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      font-size: 12.5px;
+      color: var(--fg-faint);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    footer a { color: var(--fg-dim); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.2); }
+    footer a:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">
+      <span class="logo" aria-hidden="true"></span>
+      <span>Countdown</span>
+    </a>
+    <nav>
+      <a href="./support.html">Support</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badges">
+        <span class="badge">iOS</span>
+        <span class="badge">Local-first</span>
+        <span class="badge">No tracking</span>
+        <span class="badge">Pay once</span>
+      </div>
+      <h1>Never miss<br>what matters.</h1>
+      <p class="lede">
+        A countdown app for the days you don't want to forget.
+        Photo backgrounds, home and Lock-Screen widgets,
+        unlimited pinned events — paid once, kept forever.
+      </p>
+      <a class="cta" href="#download">
+        Coming to the App Store
+        <span class="placeholder-note">Replace with your App Store link before submission</span>
+      </a>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <div class="icon">⏳</div>
+        <h3>Pin what matters</h3>
+        <p>Birthdays, trips, deadlines, milestones — all visible at a glance from your home screen.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔒</div>
+        <h3>Lock-Screen widgets</h3>
+        <p>Glance at your next event the moment you wake your phone. Plus StandBy support.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🖼️</div>
+        <h3>Your photos as backgrounds</h3>
+        <p>Pick a picture from your library and make every countdown feel personal.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌱</div>
+        <h3>Life in weeks</h3>
+        <p>An optional gentle view of your life as a grid of weeks — for perspective, not for guilt.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🛡️</div>
+        <h3>Local-first</h3>
+        <p>Everything stays on your device. No accounts, no analytics, no third-party SDKs.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎨</div>
+        <h3>48 bundled themes</h3>
+        <p>Four hand-tuned aesthetic packs. Pro unlocks the second half of every pack.</p>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <h2>Simple pricing</h2>
+      <p>
+        Free tier is generous: events, home-screen widgets, the Life screen, 24 themes,
+        up to 3 pinned events. Pro adds the rest.
+      </p>
+      <div class="plans">
+        <div class="plan">
+          <h4>Annual</h4>
+          <div class="price">$14.99<small style="font-size:14px; font-weight:500"> / year</small></div>
+          <p class="note">Auto-renews · cancel anytime</p>
+        </div>
+        <div class="plan primary">
+          <h4>Lifetime · Best value</h4>
+          <div class="price">$24.99</div>
+          <p class="note">One-time payment · no subscription</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Countdown</span>
+    <span>
+      <a href="./privacy.html">Privacy</a> ·
+      <a href="./terms.html">Terms</a> ·
+      <a href="./support.html">Support</a> ·
+      <a href="mailto:madgesmy@protonmail.com">Contact</a>
+    </span>
+  </footer>
+</body>
+</html>

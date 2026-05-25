@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Политика конфиденциальности — Countdown app.">
+  <title>Политика конфиденциальности · Countdown</title>
+  <link rel="canonical" href="https://countdown.app/privacy.ru.html">
+  <link rel="alternate" hreflang="en" href="https://countdown.app/privacy.html">
+    <style>
+    :root {
+      --bg: #0F172A;
+      --bg-soft: #1E1B4B;
+      --fg: #F1F5F9;
+      --fg-dim: rgba(241,245,249,0.72);
+      --fg-faint: rgba(241,245,249,0.5);
+      --accent: #FB923C;
+      --line: rgba(241,245,249,0.12);
+      --card: rgba(255,255,255,0.04);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--fg);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: var(--fg); }
+    header {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+    }
+    header .brand .logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #1F3A2D, #3B5837);
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
+    }
+    header nav { display: flex; gap: 16px; font-size: 14px; }
+    header nav a { color: var(--fg-dim); text-decoration: none; }
+    header nav a:hover { color: var(--fg); }
+
+    main {
+      max-width: 720px;
+      margin: 12px auto 48px;
+      padding: 0 24px;
+    }
+    article { padding-top: 20px; }
+    article h1 {
+      font-size: 38px;
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+      margin: 6px 0 0;
+    }
+    article .last-updated {
+      color: var(--fg-faint);
+      font-size: 12.5px;
+      letter-spacing: 0.4px;
+      margin: 8px 0 0;
+      text-transform: none;
+    }
+    article hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 18px 0 24px;
+    }
+    article section { margin: 0 0 26px; }
+    article h2 {
+      font-size: 18px;
+      letter-spacing: -0.1px;
+      margin: 0 0 6px;
+    }
+    article p { color: var(--fg-dim); margin: 0 0 8px; }
+    article ul { color: var(--fg-dim); margin: 0 0 8px; padding-left: 22px; }
+    article li { margin: 4px 0; }
+
+    footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      font-size: 12px;
+      color: var(--fg-faint);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--fg-dim); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 480px) {
+      article h1 { font-size: 32px; }
+      header, main, footer { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">
+      <span class="logo" aria-hidden="true"></span>
+      <span>Countdown</span>
+    </a>
+    <nav>
+      <a href="./">На главную</a>
+      <a href="./privacy.html">English</a>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1>Политика конфиденциальности</h1>
+      <p class="last-updated">Обновлено: май 2026</p>
+      <hr>
+              <section>
+          <h2>Кратко</h2>
+          <p>Countdown — это local-first приложение. Ваши события, настройки и выбранные фотографии-фоны остаются на устройстве. Мы не используем аналитику, не отправляем данные на наши серверы и не передаём ничего третьим лицам. Остальной текст ниже — для тех, кто хочет деталей.</p>
+        </section>
+
+        <section>
+          <h2>Что хранится на устройстве</h2>
+          <p>Countdown сохраняет в private-песочнице приложения:</p><ul><li>События, которые вы создаёте (название, дата, категория, фон, настройки напоминаний).</li><li>Настройки приложения (язык, тема, дата рождения для экрана «Жизнь»).</li><li>Если вы покупаете Pro — флаг успешной покупки.</li><li>Если выбираете своё фото фоном — копию этого фото, доступную только Countdown.</li></ul><p>Эти данные не покидают устройство, кроме случая, когда вы делаете системный iCloud-бэкап — тогда они подпадают под политику конфиденциальности Apple.</p>
+        </section>
+
+        <section>
+          <h2>Разрешения</h2>
+          <p>Countdown запрашивает доступ к Фото только когда вы нажимаете «Выбрать из галереи», и к Уведомлениям — только когда включаете напоминание. Эти разрешения используются строго для соответствующей функции и никогда не работают в фоне.</p>
+        </section>
+
+        <section>
+          <h2>Покупки</h2>
+          <p>Если вы решите оформить Countdown Pro, покупку обрабатывает Apple через App Store. Мы не получаем данные вашей карты, адрес или полное имя. App Store сообщает приложению только факт активной подписки/покупки.</p>
+        </section>
+
+        <section>
+          <h2>Дети</h2>
+          <p>Countdown не предназначен для детей младше 13 лет и не собирает их данные сознательно. В приложении нет рекламы и сторонних SDK.</p>
+        </section>
+
+        <section>
+          <h2>Изменения</h2>
+          <p>При существенных изменениях этой политики (например, если мы добавим сбор новых данных) in-app версия страницы обновится, а дата «Обновлено» сверху изменится. Продолжение пользования приложением после этой даты означает согласие с новой редакцией.</p>
+        </section>
+
+        <section>
+          <h2>Контакт</h2>
+          <p>Вопросы и обращения: madgesmy@protonmail.com. Стараемся отвечать в течение пяти рабочих дней.</p>
+        </section>
+
+    </article>
+  </main>
+    <footer>
+    <span>© 2026 Countdown</span>
+    <span>
+      <a href="./privacy.ru.html">Конфиденциальность</a> ·
+      <a href="./terms.ru.html">Условия</a> ·
+      <a href="./support.html">Поддержка</a> ·
+      <a href="mailto:madgesmy@protonmail.com">Контакт</a>
+    </span>
+  </footer>
+
+</body>
+</html>

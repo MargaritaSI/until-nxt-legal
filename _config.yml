@@ -1,0 +1,16 @@
+# Tells GitHub Pages' Jekyll processor not to apply a theme, not to
+# wrap our HTML in a layout, and not to munge our hand-written markup.
+# We serve the files in this folder verbatim.
+theme: null
+plugins: []
+# Don't try to template these — they're plain HTML.
+include:
+  - index.html
+  - privacy.html
+  - privacy.ru.html
+  - terms.html
+  - terms.ru.html
+  - support.html
+exclude:
+  - README.md
+  - _config.yml

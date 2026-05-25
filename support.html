@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Countdown support — help, troubleshooting, and contact.">
+  <title>Support · Countdown</title>
+  <link rel="canonical" href="https://countdown.app/support.html">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg-soft: #1E1B4B;
+      --fg: #F1F5F9;
+      --fg-dim: rgba(241,245,249,0.78);
+      --fg-faint: rgba(241,245,249,0.5);
+      --accent: #FB923C;
+      --line: rgba(241,245,249,0.12);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--fg);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: var(--fg); }
+    header {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; letter-spacing: -0.2px; text-decoration: none;
+    }
+    .brand .logo {
+      width: 24px; height: 24px; border-radius: 7px;
+      background: linear-gradient(135deg, #1F3A2D, #3B5837);
+      box-shadow: inset 0 -2px 4px rgba(0,0,0,0.25);
+    }
+    header nav { display: flex; gap: 16px; font-size: 14px; }
+    header nav a { color: var(--fg-dim); text-decoration: none; }
+    header nav a:hover { color: var(--fg); }
+
+    main { max-width: 760px; margin: 12px auto 48px; padding: 0 24px; }
+    h1 {
+      font-size: 38px; line-height: 1.05;
+      letter-spacing: -0.8px; margin: 24px 0 6px;
+    }
+    .lede {
+      color: var(--fg-dim);
+      font-size: 16px;
+      margin: 0 0 24px;
+    }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 0 0 24px; }
+
+    section { margin: 0 0 28px; }
+    h2 { font-size: 18px; letter-spacing: -0.1px; margin: 0 0 8px; }
+    p, ul, ol { color: var(--fg-dim); margin: 0 0 8px; }
+    ul, ol { padding-left: 22px; }
+    li { margin: 4px 0; }
+    details {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+    }
+    details > summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--fg);
+      list-style: none;
+    }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::before {
+      content: "+";
+      color: var(--accent);
+      font-weight: 800;
+      margin-right: 8px;
+    }
+    details[open] > summary::before { content: "–"; }
+    details > p { margin-top: 10px; }
+
+    .contact {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 8px 0 24px;
+    }
+    .contact a.email {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      font-size: 12px;
+      color: var(--fg-faint);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    footer a { color: var(--fg-dim); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">
+      <span class="logo" aria-hidden="true"></span>
+      <span>Countdown</span>
+    </a>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Support</h1>
+    <p class="lede">
+      Most things you need are below. For everything else, write to
+      <a href="mailto:madgesmy@protonmail.com">madgesmy@protonmail.com</a> — we
+      aim to reply within five business days.
+    </p>
+    <hr>
+
+    <div class="contact">
+      <strong>Quickest way to reach us</strong>
+      <p style="margin:6px 0 0;">
+        Email <a class="email" href="mailto:madgesmy@protonmail.com">madgesmy@protonmail.com</a> with:
+      </p>
+      <ul>
+        <li>Your iOS version (Settings → General → About → Software Version)</li>
+        <li>Countdown version (in the app: Settings → About)</li>
+        <li>A short description of what you tried and what happened</li>
+      </ul>
+    </div>
+
+    <section>
+      <h2>Frequently asked</h2>
+
+      <details>
+        <summary>How do I restore a previous Pro purchase?</summary>
+        <p>
+          Open Countdown → Settings → Restore purchases. Make sure you
+          are signed in to the same Apple ID you used for the original
+          purchase. If nothing happens, double-check the Apple ID in
+          Settings app → [your name] → Media &amp; Purchases.
+        </p>
+      </details>
+
+      <details>
+        <summary>I bought Pro and the lock icon is still showing.</summary>
+        <p>
+          Try Settings → Restore purchases first. If that doesn't help,
+          fully quit Countdown (swipe up from the app switcher) and
+          relaunch. Still stuck? Email us with your purchase date and
+          the email tied to your Apple ID.
+        </p>
+      </details>
+
+      <details>
+        <summary>The widget isn't updating / is showing an old day count.</summary>
+        <p>
+          iOS refreshes widgets on its own schedule — usually once an hour
+          and at midnight. To force-refresh: long-press the widget →
+          Remove → re-add it. If it still shows yesterday's count after
+          midnight, please email us.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I add a Lock-Screen widget?</summary>
+        <p>
+          Long-press your Lock Screen → Customize → Lock Screen →
+          Add Widgets → Countdown. Lock-Screen widgets are a Pro
+          feature; on the Free tier you'll see an "Upgrade to Pro" tile
+          that opens the app.
+        </p>
+      </details>
+
+      <details>
+        <summary>Where is my data stored?</summary>
+        <p>
+          Everything is on your device. We don't sync to the cloud and we
+          don't run analytics. If you delete the app, your events go with
+          it. See the
+          <a href="./privacy.html">privacy policy</a> for full detail.
+        </p>
+      </details>
+
+      <details>
+        <summary>I want a refund.</summary>
+        <p>
+          Refunds for App Store purchases are handled by Apple, not by
+          us. Go to <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>,
+          sign in with your Apple ID, find the Countdown purchase, and
+          submit a refund request. Apple decides; we don't.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I export my events?</summary>
+        <p>
+          Not yet. Right now Countdown is offline-first with no export
+          feature. If this matters to you, please write — we want to
+          hear which formats people actually need (calendar invite, CSV,
+          JSON) before we ship one.
+        </p>
+      </details>
+
+      <details>
+        <summary>How do I delete all my data?</summary>
+        <p>
+          Open Countdown → Settings → Delete all data. This removes every
+          event from this device and cannot be undone. Notifications
+          you've scheduled get cancelled automatically.
+        </p>
+      </details>
+    </section>
+
+    <section>
+      <h2>System requirements</h2>
+      <ul>
+        <li>iOS 16 or later for Lock-Screen widgets</li>
+        <li>iOS 14 or later for home-screen widgets</li>
+        <li>An Apple ID for purchases and Pro restore</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Countdown</span>
+    <span>
+      <a href="./privacy.html">Privacy</a> ·
+      <a href="./terms.html">Terms</a> ·
+      <a href="mailto:madgesmy@protonmail.com">Contact</a>
+    </span>
+  </footer>
+</body>
+</html>
