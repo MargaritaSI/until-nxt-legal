@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Add a shared countdown to Until Nxt.">
+  <title>Add a countdown · Until Nxt</title>
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg-soft: #1E1B4B;
+      --fg: #F1F5F9;
+      --fg-dim: rgba(241,245,249,0.78);
+      --fg-faint: rgba(241,245,249,0.5);
+      --accent: #FB923C;
+      --line: rgba(241,245,249,0.12);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--fg);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: var(--fg); }
+    header {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; letter-spacing: -0.2px; text-decoration: none;
+    }
+    .brand .logo {
+      width: 24px; height: 24px; border-radius: 7px;
+      background: #fff;
+      object-fit: cover;
+    }
+    header nav { display: flex; gap: 16px; font-size: 14px; }
+    header nav a { color: var(--fg-dim); text-decoration: none; }
+    header nav a:hover { color: var(--fg); }
+
+    main { max-width: 760px; margin: 12px auto 48px; padding: 0 24px; }
+    h1 {
+      font-size: 38px; line-height: 1.05;
+      letter-spacing: -0.8px; margin: 24px 0 6px;
+    }
+    .lede { color: var(--fg-dim); font-size: 16px; margin: 0 0 24px; }
+    p { color: var(--fg-dim); margin: 0 0 8px; }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 8px 0 20px;
+    }
+    .card .title {
+      font-size: 24px; line-height: 1.2; font-weight: 700;
+      letter-spacing: -0.3px; color: var(--fg);
+      margin: 0 0 6px;
+      overflow-wrap: anywhere;
+    }
+    .card .date { font-size: 17px; color: var(--fg-dim); margin: 0; }
+    .card .repeat { font-size: 14px; color: var(--fg-faint); margin: 6px 0 0; }
+
+    .btn {
+      display: block; width: 100%;
+      text-align: center; text-decoration: none;
+      font-weight: 700; font-size: 17px;
+      padding: 15px 18px; border-radius: 14px;
+      margin: 0 0 10px;
+    }
+    .btn.primary { background: var(--accent); color: #1B1205; }
+    .btn.ghost {
+      background: transparent; color: var(--fg);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .note { font-size: 13px; color: var(--fg-faint); margin: 14px 0 0; }
+    [hidden] { display: none !important; }
+
+    footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      font-size: 12px;
+      color: var(--fg-faint);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    footer a { color: var(--fg-dim); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">
+      <img class="logo" src="./app-icon.png" alt="" aria-hidden="true">
+      <span>Until Nxt</span>
+    </a>
+    <nav>
+      <a href="./" id="nav-home">Home</a>
+      <a href="./privacy.html" id="nav-privacy">Privacy</a>
+      <a href="./terms.html" id="nav-terms">Terms</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 id="heading">A countdown for you</h1>
+    <p class="lede" id="lede">Someone shared a date with you. Open it in Until Nxt to add it to your own countdowns.</p>
+
+    <div class="card" id="card" hidden>
+      <p class="title" id="ev-title" dir="auto"></p>
+      <p class="date" id="ev-date"></p>
+      <p class="repeat" id="ev-repeat" hidden></p>
+    </div>
+
+    <p id="bad" hidden>This link is incomplete, so there is nothing to add. Ask for the link again.</p>
+
+    <a class="btn primary" id="open" href="#" hidden>Open in Until Nxt</a>
+    <a class="btn ghost" id="store" href="https://apps.apple.com/app/id6771397857" rel="noopener">Get Until Nxt on the App Store</a>
+
+    <p class="note" id="note-install">No app yet? Install it, then come back to this page and tap the button again.</p>
+    <p class="note" id="note-private">The date lives in the link itself: this page sends nothing anywhere, and the app asks before adding it.</p>
+  </main>
+
+  <footer>
+    <span>© 2026 IT Healthy Coder</span>
+    <span>
+      <a href="./privacy.html" id="foot-privacy">Privacy</a> ·
+      <a href="./terms.html" id="foot-terms">Terms</a>
+    </span>
+  </footer>
+
+  <script>
+    // Everything this page needs is in the URL fragment (after "#"),
+    // which browsers never send to a server. No network calls, no
+    // analytics, no storage. Every value from the link is written with
+    // textContent only — never as HTML.
+    (function () {
+      'use strict';
+
+      var RU = {
+        heading: 'Отсчёт для тебя',
+        lede: 'С тобой поделились датой. Открой её в Until Nxt, чтобы добавить к своим отсчётам.',
+        bad: 'Ссылка неполная — добавлять нечего. Попроси прислать её ещё раз.',
+        open: 'Открыть в Until Nxt',
+        store: 'Скачать Until Nxt в App Store',
+        noteInstall: 'Приложения ещё нет? Установи его, вернись на эту страницу и нажми кнопку ещё раз.',
+        notePrivate: 'Дата хранится в самой ссылке: страница никуда ничего не отправляет, а приложение спросит, прежде чем добавить.',
+        yearly: 'Повторяется каждый год',
+        home: 'Главная', privacy: 'Конфиденциальность', terms: 'Условия',
+        title: 'Добавить отсчёт · Until Nxt'
+      };
+      var EN = { yearly: 'Repeats every year' };
+
+      var lang = (navigator.language || 'en').toLowerCase();
+      var isRu = lang.indexOf('ru') === 0;
+      var el = function (id) { return document.getElementById(id); };
+
+      if (isRu) {
+        document.documentElement.lang = 'ru';
+        document.title = RU.title;
+        el('heading').textContent = RU.heading;
+        el('lede').textContent = RU.lede;
+        el('bad').textContent = RU.bad;
+        el('open').textContent = RU.open;
+        el('store').textContent = RU.store;
+        el('note-install').textContent = RU.noteInstall;
+        el('note-private').textContent = RU.notePrivate;
+        el('nav-home').textContent = RU.home;
+        el('nav-privacy').textContent = RU.privacy;
+        el('nav-terms').textContent = RU.terms;
+        el('foot-privacy').textContent = RU.privacy;
+        el('foot-terms').textContent = RU.terms;
+        el('nav-privacy').href = './privacy.ru.html';
+        el('nav-terms').href = './terms.ru.html';
+        el('foot-privacy').href = './privacy.ru.html';
+        el('foot-terms').href = './terms.ru.html';
+      }
+
+      // Same rules as the app's parser (lib/services/share_link.dart).
+      var UNSAFE = /[\u0000-\u001F\u007F-\u009F\u00AD\u061C\u180E\u200B-\u200F\u2028-\u202E\u2060-\u206F\uFEFF\uFFF9-\uFFFB]/g;
+      var DATE = /^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2})(?::\d{2})?)?$/;
+
+      function cleanTitle(raw) {
+        if (typeof raw !== 'string') return null;
+        var s = raw.replace(UNSAFE, ' ').replace(/\s+/g, ' ').trim();
+        if (!s) return null;
+        var chars = Array.from(s);
+        if (chars.length > 80) s = chars.slice(0, 80).join('').trim();
+        return s || null;
+      }
+
+      function readDate(raw) {
+        if (typeof raw !== 'string') return null;
+        var m = DATE.exec(raw.trim());
+        if (!m) return null;
+        var y = +m[1], mo = +m[2], d = +m[3];
+        var h = m[4] ? +m[4] : 0, mi = m[5] ? +m[5] : 0;
+        if (y < 1900 || y > 2200) return null;
+        var date = new Date(y, mo - 1, d, h, mi);
+        // A day that doesn't exist (Feb 30) rolls over — reject it.
+        if (date.getFullYear() !== y || date.getMonth() !== mo - 1 ||
+            date.getDate() !== d || date.getHours() !== h ||
+            date.getMinutes() !== mi) return null;
+        var two = function (n) { return (n < 10 ? '0' : '') + n; };
+        return {
+          date: date,
+          hasTime: h !== 0 || mi !== 0,
+          iso: m[1] + '-' + m[2] + '-' + m[3] + 'T' + two(h) + ':' + two(mi)
+        };
+      }
+
+      function render() {
+        var params;
+        try {
+          params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        } catch (e) {
+          params = null;
+        }
+        var title = params ? cleanTitle(params.get('t')) : null;
+        var when = params ? readDate(params.get('d')) : null;
+        var yearly = !!params && params.get('r') === 'yearly';
+
+        if (!title || !when) {
+          el('card').hidden = true;
+          el('open').hidden = true;
+          el('bad').hidden = false;
+          return;
+        }
+
+        var opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        if (when.hasTime) { opts.hour = '2-digit'; opts.minute = '2-digit'; }
+        var dateText;
+        try {
+          dateText = new Intl.DateTimeFormat(isRu ? 'ru' : undefined, opts).format(when.date);
+        } catch (e) {
+          dateText = when.iso.replace('T', ' ');
+        }
+
+        el('ev-title').textContent = title;
+        el('ev-date').textContent = dateText;
+        el('ev-repeat').textContent = isRu ? RU.yearly : EN.yearly;
+        el('ev-repeat').hidden = !yearly;
+        el('card').hidden = false;
+        el('bad').hidden = true;
+
+        // Only the three cleaned values go on to the app.
+        el('open').href = 'countdown://add?t=' + encodeURIComponent(title) +
+          '&d=' + encodeURIComponent(when.iso) +
+          '&r=' + (yearly ? 'yearly' : 'none');
+        el('open').hidden = false;
+      }
+
+      render();
+      window.addEventListener('hashchange', render);
+    })();
+  </script>
+</body>
+</html>
